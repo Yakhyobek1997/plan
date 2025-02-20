@@ -19,13 +19,14 @@
 	background: rgb(227, 227, 231);
 }
 
-.main_frame .left_frame {
+.left_frame {
 	position: relative;
-	width: 305px;
+	width: 280px;
 	height: 1315px;
 	background-color: rgb(255, 255, 255);
 	display: flex;
 	flex-direction: column;
+	margin-left: 10px;
 }
 
 .main_frame .right_frame {
@@ -43,7 +44,7 @@
 	width: 228px;
 	height: 267px;
 	margin-top: 50px;
-	margin-left: 45px;
+	margin-left: 30px;
 
 	display: flex;
 	flex-direction: column;
@@ -70,7 +71,7 @@
 	flex-direction: row;
 	align-items: center;
 	color: rgb(43, 43, 43);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 123.6%;
@@ -87,7 +88,7 @@
 	justify-content: center;
 	align-items: center;
 	color: rgb(118, 118, 118);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 24px;
@@ -101,7 +102,8 @@
 	width: 100%;
 	flex-direction: row;
 	justify-content: space-around;
-	margin-top: 19px;
+	margin-top: 20px;
+	margin-right: 20px;
 }
 
 .link_href {
@@ -126,7 +128,7 @@
 	position: relative;
 	height: 0px;
 	width: 220px;
-	margin-left: 40px;
+	margin-left: 30px;
 	margin-bottom: 25px;
 	margin-top: 39px;
 	border: 1.5px solid #f0f0f6;
@@ -227,7 +229,7 @@
 
 .language_title {
 	color: rgb(43, 43, 43);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 123.6%;
@@ -500,7 +502,7 @@
 
 .mid_frame_skill_txt {
 	color: rgb(118, 118, 118);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 24px;
@@ -514,7 +516,7 @@
 .mid_frame_skill_txt1 {
 	position: relative;
 	color: rgb(43, 43, 43);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	font-size: 18px;
 	font-weight: 500;
 	margin-top: 28px;
@@ -523,7 +525,7 @@
 
 .mid_frame_skill_title1 {
 	color: rgb(118, 118, 118);
-	font-family: Inter;
+	font-family: 'Times New Roman', Times, serif;
 	width: 260px;
 	height: 78px;
 	font-size: 15px;
