@@ -5,7 +5,17 @@ console.log('web serverni boshlash')
 const express = require('express')
 const app = express()
 const http = require('http')
-const { text } = require('stream/consumers')
+const fs = require('fs')
+
+let user
+fs.readFile('database/user.json', 'utf8', (err, data) => {
+	if (err) {
+		console.log('ERROR:', err)
+	} else {
+		user = JSON.parse(data) // JSON.parse() funksiyasiga data uzatildi
+	}
+})
+
 // 1 KIrish codes
 app.use(express.static('public')) // Xar qanday browserdan kiradigan so'rovlar uchun ochiq public
 app.use(express.json()) // Kirib kelyotkan json datani object xolatiga ogirib beradi
@@ -22,8 +32,9 @@ app.post('/create-item', (req, res) => {
 	console.log(req)
 	res.json({ test: 'success' })
 })
-app.get('./author', (req, res) => {
-	res.render('author')
+app.get('/author', (req, res) => {
+	// Noto'g'ri yo'l to'g'rilandi
+	res.render('author', { user: user })
 })
 
 app.get('/', function (req, res) {
