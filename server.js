@@ -11,15 +11,19 @@ app.use(express.static('public')) // Xar qanday browserdan kiradigan so'rovlar u
 app.use(express.json()) // Kirib kelyotkan json datani object xolatiga ogirib beradi
 app.use(express.urlencoded({ extended: true })) // form requestdan nimadirni post qilsak express qabul qiladi
 
-// Sessiya va rendering sozlamalari
+// 2. Sessiya va rendering sozlamalari
+// 3. Views code
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 
-// Routing
+// 4. Routing
 app.post('/create-item', (req, res) => {
 	// malumotni olib kelib data basega yozadi
 	console.log(req)
 	res.json({ test: 'success' })
+})
+app.get('./author', (req, res) => {
+	res.render('author')
 })
 
 app.get('/', function (req, res) {
