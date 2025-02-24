@@ -54,7 +54,7 @@
 // 	else if (a > 20 && a <= 50) return list[3]
 // 	else if (a > 20 && a <= 60) return list[4]
 // 	else {
-// 		return new Promise((resolve, reject) => {
+// 		return new Promise((resolve, reject) => { //
 // 			setInterval(() => {
 // 				resolve(list[5])
 // 			}, 1000)
@@ -117,3 +117,15 @@
 // 	}
 // })
 // console.log('passed here 1')
+
+// MIT TASK
+// Shunday 2 parametrli function tuzing,
+// hamda birinchi parametrdagi letterni ikkinchi
+//  parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
+// MASALAN countLetter("e", "engineer") 3ni return qiladi
+
+function countLetter(letter, word) {
+	return word.split(letter).length - 1
+}
+
+console.log(countLetter('e', 'engineer')) // 3
