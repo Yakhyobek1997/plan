@@ -1,4 +1,5 @@
-//__________________________________________________________________________________________Call back funtion start
+//_________________________________________Call back funtion start
+
 // console.log('Jeckma maslaxatlari')
 // const list = [
 // 	"Yaxshi talaba bo'ling", //10-20
@@ -32,9 +33,9 @@
 // })
 // console.log('passed here 1')
 
-//________________________________________________________________________________________________END
+//__________________________________________________________END
 
-//________________________________________________________________________________________________ASYNC function START
+//______________________________ASYNC function START
 
 // console.log('Jeckma maslaxatlari')
 // const list = [
@@ -54,7 +55,8 @@
 // 	else if (a > 20 && a <= 50) return list[3]
 // 	else if (a > 20 && a <= 60) return list[4]
 // 	else {
-// 		return new Promise((resolve, reject) => { //
+// 		return new Promise((resolve, reject) => {
+// 			//
 // 			setInterval(() => {
 // 				resolve(list[5])
 // 			}, 1000)
@@ -62,7 +64,7 @@
 // 	}
 // }
 
-// then vs catch
+// // then vs catch
 
 // console.log('passed here 0')
 // maslaxatBering(25)
@@ -75,7 +77,7 @@
 
 // console.log('passed here 1')
 
-// asyn / await
+// // asyn / await
 // async function run() {
 // 	let javob = await maslaxatBering(65)
 // 	console.log(javob)
@@ -83,7 +85,7 @@
 
 // run()
 
-//______________________________________________________________________callback _ Set interval bilan bo'lsa
+// //_______________callback _ Set interval bilan bo'lsa
 
 // console.log('Jeckma maslaxatlari')
 // const list = [
@@ -124,8 +126,8 @@
 //  parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi
 
-function countLetter(letter, word) {
-	return word.split(letter).length - 1
-}
+// function countLetter(letter, word) {
+// 	return word.split(letter).length - 1
+// }
 
-console.log(countLetter('e', 'engineer')) // 3
+// console.log(countLetter('e', 'engineer')) // 3

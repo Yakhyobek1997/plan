@@ -39,12 +39,14 @@ app.get('/author', (req, res) => {
 
 app.get('/', function (req, res) {
 	// malumot olish uhcun
-	res.render('harid')
+	res.render('reja')
 })
 
 // Serverni ishga tushirish
 const server = http.createServer(app)
 let PORT = 3000
 server.listen(PORT, function () {
-	console.log(`Server muvaffaqiyatli ishga tushdi: ${PORT}`)
+	console.log(
+		`Server muvaffaqiyatli ishga tushdi: ${PORT}, http://localhost:${PORT}`
+	)
 })
