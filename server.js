@@ -20,17 +20,12 @@ mongodb.connect(
 
 			const app = require('./app')
 
-			const server = http.createServer(app) //server ham object
+			const server = http.createServer(app) //server (object)
 			let PORT = 3000
-			//-8- serverga <listen> qil degan metoodi orqali buyuruq beryapmiz
-			//<listen> ichida 2 ta orgemnt bor. Bu callback. 1.PORT 2.Function
-			// 3000 chi portni eshitib deb majburlayapmiz
 			server.listen(PORT, function () {
 				console.log(
-					// va 3000 chi portni eshitgan payti <localhost 3000> malumotni ber diyapmiz
 					`The server is running successfully on port:${PORT},http://localhost:${PORT}`
 				)
-				//server shu bilan 3000 prtda ishga tushyapti
 			})
 		}
 	}
