@@ -20,9 +20,6 @@ app.set('views', 'views')
 app.set('view engine', 'ejs')
 
 //4.routing code
-app.get('/author', (req, res) => {
-	res.render('author', { user: user })
-})
 
 app.post('/create-item', (req, res) => {
 	console.log('user entered / create-item')
@@ -37,17 +34,6 @@ app.post('/delete-item', (req, res) => {
 	const id = req.body.id
 	db.collection('plans').deleteOne(
 		{ _id: new mongodb.ObjectId(id) },
-		function (err, data) {
-			res.json({ state: 'success' })
-		}
-	)
-})
-
-app.post('/edit-item', (req, res) => {
-	const data = req.body
-	db.collection('plans').findOneAndUpdate(
-		{ _id: new mongodb.ObjectId(data.id) },
-		{ $set: { reja: data.new_input } },
 		function (err, data) {
 			res.json({ state: 'success' })
 		}
