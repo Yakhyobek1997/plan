@@ -1,4 +1,4 @@
-console.log('web serverni boshlash')
+// console.log('web serverni boshlash')
 const express = require('express')
 const http = require('http')
 const fs = require('fs')

@@ -120,7 +120,7 @@
 // })
 // console.log('passed here 1')
 
-// MIT TASK
+// MIT TASK 1)
 // Shunday 2 parametrli function tuzing,
 // hamda birinchi parametrdagi letterni ikkinchi
 //  parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
@@ -131,3 +131,11 @@
 // }
 
 // console.log(countLetter('e', 'engineer')) // 3
+
+// MIT TASK 2)
+
+// function countDigits(str) {
+// 	return str.split('').filter(char => !isNaN(char) && char !== ' ').length
+// }
+
+// console.log(countDigits('ad2a54y79wet0sfgb9')) // 7 ni return qiladi

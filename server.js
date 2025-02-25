@@ -12,7 +12,7 @@ mongodb.connect(
 		useUnifiedTopology: true,
 	},
 	(err, client) => {
-		//agar yaxshi ulanmas error boladi
+		//agar yaxshi ulanmasa error boladi
 		if (err) console.log('ERROR on connection MongDB')
 		else {
 			console.log('MongoDB connection succeed')
