@@ -1,4 +1,28 @@
-//_________________________________________Call back funtion start
+//_________________________________________
+
+// C-TASK:
+
+// Shunday function tuzing, u 2ta string parametr
+// ega bolsin, hamda agar har ikkala string bir hil
+// harflardan iborat bolsa true aks holda false qaytarsin
+// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+
+// function checkContent(string1, string2) {
+// 	// Ikkala stringni massivga ajratamiz, tartiblaymiz va qayta birlashtiramiz
+// 	const sorted1 = string1.split('').sort().join('')
+// 	const sorted2 = string2.split('').sort().join('')
+
+// 	// Tartiblangan stringlar bir xil bo'lsa, true, aks holda false qaytariladi
+// 	return sorted1 === sorted2
+// }
+
+// // Misollar
+// console.log(checkContent('mitgroup', 'gmtiprou')) // true
+// console.log(checkContent('hello', 'olhel')) // true
+// console.log(checkContent('test', 'tseta')) // false
+// console.log(checkContent('abcd', 'dcba')) // true
+
+//___________________________________________________________________________________
 
 // console.log('Jeckma maslaxatlari')
 // const list = [

@@ -1,5 +1,3 @@
-console.log('FrontEnd JS ishga tushdi')
-
 // Elementlarni olamiz
 const createField = document.getElementById('create-field')
 const itemList = document.getElementById('item-list')
