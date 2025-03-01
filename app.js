@@ -52,6 +52,21 @@ app.get('/author', (req, res) => {
 	res.render('author', { user: user })
 })
 
+
+
+app.post("/edit-item", (req, res) => {
+	const data = req.body;
+	db.collection("plans").findOneAndUpdate(
+	  { _id: new mongodb.ObjectId(data.id) },
+	  { $set: { reja: data.new_input } },
+	  function (err, data) {
+		res.json({ state: "success" });
+	  }
+	);
+  });
+
+
+
 app.get('/', function (req, res) {
 	console.log('user entered /')
 	db.collection('plans')
