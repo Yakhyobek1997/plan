@@ -54,32 +54,44 @@ app.get('/author', (req, res) => {
 
 
 
+// HTTP POST so'rovi uchun ishlatiladi "/edit-item"
 app.post("/edit-item", (req, res) => {
-	const data = req.body;
-	db.collection("plans").findOneAndUpdate(
-	  { _id: new mongodb.ObjectId(data.id) },
-	  { $set: { reja: data.new_input } },
-	  function (err, data) {
-		res.json({ state: "success" });
-	  }
-	);
-  });
+    // So'rov tanasi (body)dan ma'lumotlarni olish
+    const data = req.body;
+    
+    // "plans" kolleksiyasidagi hujjatni yangilash
+    db.collection("plans").findOneAndUpdate(
+        // Yangilanishi kerak bo'lgan hujjatni tanlash (_id orqali)
+        { _id: new mongodb.ObjectId(data.id) },
+        // Hujjatning "reja" qismini yangilash
+        { $set: { reja: data.new_input } },
+        // Callback funksiyasi (amaliyotdan so'ng chaqiriladi)
+        function (err, data) {
+            // Agar xato bo'lmasa, muvaffaqiyatli javobni qaytaring
+            res.json({ state: "success" });
+        }
+    );
+});
 
-
-
+// HTTP GET so'rovi uchun ishlatiladi "/"
 app.get('/', function (req, res) {
-	console.log('user entered /')
-	db.collection('plans')
-		.find()
-		.toArray((err, data) => {
-			if (err) {
-				console.log(err)
-				res.end('something went wrong')
-			} else {
-				console.log(data)
-				res.render('reja', { items: data })
-			}
-		})
-})
+    console.log('user entered /');
+    
+    // "plans" kolleksiyasidagi barcha hujjatlarni olish
+    db.collection('plans')
+        .find()
+        .toArray((err, data) => {
+            if (err) {
+        
+                console.log(err);
+                res.end('something went wrong');
+            } else {
+                // Ma'lumotlarni konsolga chop etish va "reja" shabloniga yuborish
+                console.log(data);
+                res.render('reja', { items: data });
+            }
+        });
+});
 
-module.exports = app
+module.exports = app;
+
