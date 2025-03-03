@@ -1,56 +1,69 @@
 // console.log('web serverni boshlash')
-const express = require('express')
-const http = require('http')
-const fs = require('fs')
-const app = express()
+const express = require('express') // Express.js modulini o'zgarmas (constant) o'zgaruvchi sifatida chaqiradi va `express` ga saqlaydi
+const http = require('http') // HTTP modulini o'zgarmas o'zgaruvchi sifatida chaqiradi va `http` ga saqlaydi
+const fs = require('fs') // Fayl tizimi (File System) modulini o'zgarmas o'zgaruvchi sifatida chaqiradi va `fs` ga saqlaydi
+const app = express() // `express` funksiyasini chaqirib, `app` nomli Express ilovasini yaratadi
+
 
 // mongoDB call qilamiz
-const db = require('./server').db()
-const mongodb = require('mongodb')
+const db = require('./server').db() // 'server' modulidan `db` funksiyasini chaqiradi va `db` nomli o'zgaruvchiga saqlaydi
+const mongodb = require('mongodb') // 'mongodb' modulini o'zgarmas o'zgaruvchi sifatida chaqiradi va `mongodb` ga saqlaydi
+
 
 //1.kirish kodlari
 app.use(express.static('public'))
+// 'public' papkasidagi statik fayllarni xizmat qilish uchun Express middleware-funksiyasini qo'shadi (masalan, HTML, CSS, va JavaScript fayllari)
 app.use(express.json())
+// JSON ma'lumotlarni qabul qilish va ular bilan ishlash uchun Express middleware-funksiyasini qo'shadi
 app.use(express.urlencoded({ extended: true }))
+// URL-kodlangan ma'lumotlarni qabul qilish va ular bilan ishlash uchun Express middleware-funksiyasini qo'shadi, 'extended: true' esa kompleks ob'ektlarni qo'llab-quvvatlaydi
+
 
 //2.session code
 
 //3.views code
 app.set('views', 'views')
+// `views` papkasini Express ilovasidagi view shablonlarini saqlaydigan joy sifatida belgilaydi
 app.set('view engine', 'ejs')
+// Express ilovasi uchun `ejs` (Embedded JavaScript) shablonlash dvigatelini o'rnatadi
+
 
 //4.routing code
 
-app.post('/create-item', (req, res) => {
-	console.log('user entered / create-item')
-	const new_reja = req.body.reja
-	db.collection('plans').insertOne({ reja: new_reja }, (err, data) => {
-		console.log(data.ops)
-		res.json(data.ops[0])
-	})
+app.post('/create-item', (req, res) => { // '/create-item' endpointi uchun POST so'rovini oladi va unga ishlov beradi
+    console.log('user entered /create-item') // Konsolda foydalanuvchi '/create-item'ga kirgani haqida xabar chiqaradi
+    const new_reja = req.body.reja // `req.body.reja` dan yangi reja qiymatini oladi va `new_reja` o'zgaruvchiga saqlaydi
+    db.collection('plans').insertOne({ reja: new_reja }, (err, data) => { // 'plans' kolleksiyasiga yangi reja hujjatini qo'shadi
+        console.log(data.ops) // Konsolda operatsiya natijasini chiqaradi
+        res.json(data.ops[0]) // Mijozga yaratilgan yangi reja hujjatini JSON formatida jo'natadi
+    })
 })
 
-app.post('/delete-item', (req, res) => {
-	const id = req.body.id
-	db.collection('plans').deleteOne(
-		{ _id: new mongodb.ObjectId(id) },
-		function (err, data) {
-			res.json({ state: 'success' })
-		}
-	)
+
+// delete section
+// Step 3
+app.post('/delete-item', (req, res) => { // '/delete-item' endpointi uchun POST so'rovini olib ishlov beradi
+    const id = req.body.id // So'rov(body) 'id' ni oladi va `id` o'zgaruvchiga saqlaydi
+    db.collection('plans').deleteOne( // 'plans' kolleksiyasidan bir hujjatni o'chiradi
+        { _id: new mongodb.ObjectId(id) }, // '_id' teng bo'lgan hujjatni tanlaydi va yangi `ObjectId` yaratiladi
+        function (err, data) { // Callback funksiyasi, o'chirish operatsiyasi tugagach chaqiriladi
+            res.json({ state: 'success' }) // Mijozga JSON formatida javob yuboradi, bu muvaffaqiyatni ko'rsatadi
+        }
+    )
 })
 
-app.post('/delete-all', (req, res) => {
-	if (req.body.delete_all) {
-		db.collection('plans').deleteMany(() => {
-			res.json({ state: 'delete all' })
-		})
-	}
+app.post('/delete-all', (req, res) => { // '/delete-all' endpointi uchun POST so'rovini oladi va unga ishlov beradi
+    if (req.body.delete_all) { // So'rov tanasidan (body) 'delete_all' mavjudligini tekshiradi
+        db.collection('plans').deleteMany(() => { // 'plans' kolleksiyasidagi barcha hujjatlarni o'chiradi
+            res.json({ state: 'delete all' }) // Mijozga JSON formatida javob yuboradi, bu barcha hujjatlar o'chirilganini ko'rsatadi
+        })
+    }
 })
 
-app.get('/author', (req, res) => {
-	res.render('author', { user: user })
+app.get('/author', (req, res) => { // '/author' endpointi uchun GET so'rovini oladi va unga ishlov beradi
+    res.render('author', { user: user }) // 'author' view shablonini render qiladi va `user` ob'ektini unga o'tkazadi
 })
+
 
 
 
