@@ -31,7 +31,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
 
 // Rest Api ni qurvotti
   axios // method
-  .post("/create-item", { reja: createField.value }) // 'create-item' URL manziliga 'POST' so'rovini yuboradi, so'rov tanasida 'reja' sifatida 'createField.value' ni yuboradi
+  .post("/create-item", { reja: createField.value }) // 'create-item' URL manziliga 'POST' (asynr method) so'rovini yuboradi, so'rov tanasida 'reja' sifatida 'createField.value' ni yuboradi
   .then((response) => { // So'rov muvaffaqiyatli amalga oshirilsa, kelgan javob bilan ishlash uchun funksiyani chaqiradi
     document
       .getElementById("item-list") // HTML hujjatidagi 'item-list' identifikatoriga ega elementni topadi
@@ -45,7 +45,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
 });
 
 
-// Step - 2 (Delete operation)
+// STEP - 1 (Delete operation)
 
 document.addEventListener("click", function (e) { // Butun hujjatda "click" event ni tinglaydi
   
@@ -55,6 +55,8 @@ document.addEventListener("click", function (e) { // Butun hujjatda "click" even
     if (confirm("Aniq ochirmoqchimisiz?")) { // Foydalanuvchidan o'chirishni tasdiqlashni so'raydi
       axios
         .post("/delete-item", { id: e.target.getAttribute("data-id") }) // '/delete-item' URL manziliga POST so'rovini yuboradi, so'rov tanasida "id" ni yuboradi
+
+// STEP - 6 Frontendga kirib kelish
         .then((response) => { // So'rov muvaffaqiyatli amalga oshirilsa, kelgan javob bilan ishlash uchun funksiyani chaqiradi
           console.log(response.data); // Javobni konsolda chiqaradi
           e.target.parentElement.parentElement.remove(); // HTML hujjatidan elementni o'chiradi

@@ -28,7 +28,7 @@ app.set('view engine', 'ejs')
 // Express ilovasi uchun `ejs` (Embedded JavaScript) shablonlash dvigatelini o'rnatadi
 
 
-//4.routing code
+//4.routing code 
 
 app.post('/create-item', (req, res) => { // '/create-item' endpointi uchun POST so'rovini oladi va unga ishlov beradi
     console.log('user entered /create-item') // Konsolda foydalanuvchi '/create-item'ga kirgani haqida xabar chiqaradi
@@ -40,17 +40,25 @@ app.post('/create-item', (req, res) => { // '/create-item' endpointi uchun POST 
 })
 
 
-// delete section
-// Step 3
+
+
+// Delete section 
+// STEP 2 (Backendga kirish)
 app.post('/delete-item', (req, res) => { // '/delete-item' endpointi uchun POST so'rovini olib ishlov beradi
     const id = req.body.id // So'rov(body) 'id' ni oladi va `id` o'zgaruvchiga saqlaydi
+// STEP 3 (Backend => Database delete amalga oshirish)  
     db.collection('plans').deleteOne( // 'plans' kolleksiyasidan bir hujjatni o'chiradi
         { _id: new mongodb.ObjectId(id) }, // '_id' teng bo'lgan hujjatni tanlaydi va yangi `ObjectId` yaratiladi
         function (err, data) { // Callback funksiyasi, o'chirish operatsiyasi tugagach chaqiriladi
+// STEP 4 DataBase yana qayta backendga qaytmoqda
             res.json({ state: 'success' }) // Mijozga JSON formatida javob yuboradi, bu muvaffaqiyatni ko'rsatadi
         }
     )
 })
+
+
+
+
 
 app.post('/delete-all', (req, res) => { // '/delete-all' endpointi uchun POST so'rovini oladi va unga ishlov beradi
     if (req.body.delete_all) { // So'rov tanasidan (body) 'delete_all' mavjudligini tekshiradi

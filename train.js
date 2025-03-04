@@ -1,5 +1,59 @@
 //_________________________________________
 
+
+// D-Task
+
+// class Shop {
+//     constructor(non, lagmon, cola) {
+//         this.products = {
+//             non: non,
+//             lagmon: lagmon,
+//             cola: cola
+//         };
+//     }
+
+//     // Hozirgi vaqtni olish uchun helper function
+//    getCurrentTime() {
+//     const now = new Date();
+//     return `${now.getHours()}:${now.getMinutes()}`;
+// }
+
+
+//     // Mahsulot qoldig'ini chiqarish
+//     qoldiq() {
+//         const time = this.getCurrentTime();
+//         console.log(`Hozir ${time}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`);
+//     }
+
+//     // Mahsulot sotish
+//     sotish(nomi, soni) {
+//         if (this.products[nomi] >= soni) {
+//             this.products[nomi] -= soni;
+//             const time = this.getCurrentTime();
+//             console.log(`Hozir ${time}da ${soni}ta ${nomi} sotildi!`);
+//         } else {
+//             console.log(`Hozir ${this.getCurrentTime()}da xatolik: ${nomi} yetarli emas!`);
+//         }
+//     }
+
+//     // Mahsulot qabul qilish
+//     qabul(nomi, soni) {
+//         this.products[nomi] += soni;
+//         const time = this.getCurrentTime();
+//         console.log(`Hozir ${time}da ${soni}ta ${nomi} qabul qilindi!`);
+//     }
+// }
+
+// const shop = new Shop(4, 5, 2); // 4 ta non, 5 ta lagmon, 2 ta cola
+
+// shop.qoldiq();      
+// shop.sotish('non', 3); 
+// shop.qabul('cola', 4); 
+// shop.qoldiq();  
+
+
+
+
 // C-TASK:
 
 // Shunday function tuzing, u 2ta string parametr
@@ -163,3 +217,25 @@
 // }
 
 // console.log(countDigits('ad2a54y79wet0sfgb9')) // 7 ni return qiladi
+
+
+
+
+///________________________________PATTERNLAR_________________________________
+
+// Dizayn Patternlari: (Malum bir qismi bajaradi) , 
+// Dizayn patternlari dasturiy ta'minotning aniq muammolarini hal qilish uchun oldindan aniqlangan shablonlar.
+
+
+// Arxitektura Patternlari: (Suyagi dep tushunamiz), 
+// Arxitektura patternlari dasturiy tizimning umumiy tuzilishini aniqlaydi va komponentlar qanday o'zaro bog'lanishini belgilaydi.
+
+
+
+// API -3 typelari  (Methodlari:  2 xil get va post)
+// 1) REST
+// 2) Graph
+// 3) Traditional
+
+// Backend Server site rendering (BSSR)
+// 

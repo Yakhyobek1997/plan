@@ -15,10 +15,8 @@ mongodb.connect(
 	},
 	(err, client) => {
 		if (err) console.log('ERROR on connection MongDB')
-		// Agar MongoDB ulanishida xatolik bo'lsa, xabar chiqaramiz
 		else {
 			console.log('MongoDB connection succeed')
-			// Ulanish muvaffaqiyatli bo'lsa, konsolga xabar chiqaramiz
 			module.exports = client
 			// MongoDB ulanishini boshqa fayllarga eksport qilamiz
 
@@ -33,7 +31,6 @@ mongodb.connect(
 				console.log(
 					`The server is running successfully on port:${PORT}, http://localhost:${PORT}`
 				)
-				// Server ishga tushganini va qaysi portda ekanligini konsolga chiqaramiz
 			})
 		}
 	}
