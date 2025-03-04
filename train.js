@@ -22,7 +22,7 @@
 //     // Mahsulot qoldig'ini chiqarish
 //     qoldiq() {
 //         const time = this.getCurrentTime();
-//         console.log(`Hozir ${time}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`);
+//         console.log(`Hozir ${time}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud`);
 //     }
 
 //     // Mahsulot sotish
@@ -30,9 +30,9 @@
 //         if (this.products[nomi] >= soni) {
 //             this.products[nomi] -= soni;
 //             const time = this.getCurrentTime();
-//             console.log(`Hozir ${time}da ${soni}ta ${nomi} sotildi!`);
+//             console.log(`Hozir ${time}da ${soni}ta ${nomi} sotildi`);
 //         } else {
-//             console.log(`Hozir ${this.getCurrentTime()}da xatolik: ${nomi} yetarli emas!`);
+//             console.log(`Hozir ${this.getCurrentTime()}da xatolik: ${nomi} yetarli emas`);
 //         }
 //     }
 
@@ -40,7 +40,7 @@
 //     qabul(nomi, soni) {
 //         this.products[nomi] += soni;
 //         const time = this.getCurrentTime();
-//         console.log(`Hozir ${time}da ${soni}ta ${nomi} qabul qilindi!`);
+//         console.log(`Hozir ${time}da ${soni}ta ${nomi} qabul qilindi`);
 //     }
 // }
 
