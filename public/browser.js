@@ -46,14 +46,14 @@ document.addEventListener("click", function (e) {
 
   // Agar bosilgan element "delete-me" classiga ega bo'lsa
   if (e.target.classList.contains("delete-me")) {
-    if (confirm("Aniq o‘chirmoqchimisiz?")) {
+    if (confirm("Are you sure ?")) {
       axios
         .post("/delete-item", { id: e.target.getAttribute("data-id") })
         .then((response) => {
           e.target.parentElement.parentElement.remove();
         })
         .catch((err) => {
-          console.log("Iltimos, qaytadan harakat qiling!", err);
+          console.log("Iltimos, Try once again!", err);
         });
     }
   }
@@ -77,7 +77,7 @@ document.addEventListener("click", function (e) {
           ).innerHTML = userInput;
         })
         .catch((err) => {
-          console.log("iltimos qaytadan harakat qiling!", err);
+          console.log("please try again !", err);
         });
     }
   }
@@ -94,7 +94,7 @@ document.getElementById("clean-all").addEventListener("click", function () {
       });
     })
     .catch((err) => {
-      console.log("Iltimos qaytadan harakat qiling!");
+      console.log("Please try again!");
     });
 });
 
