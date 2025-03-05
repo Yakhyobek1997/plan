@@ -1,5 +1,14 @@
 //_________________________________________
 
+// E-Task
+
+function getReverse(str) {
+    return str.split("").reverse().join("");
+  }
+  
+  // logda ko'ramiz
+  console.log(getReverse("hello")); // olleh qiladi
+  
 
 // D-Task
 
