@@ -27,46 +27,54 @@ let createField = document.getElementById("create-field");
 //create formni qolga olamiz
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault(); // boshqa pagega o'tib ketmasligi uchun
-
+}); // Missing closing parenthesis added here
 
 // Rest Api ni qurvotti
-  axios // method
-  .post("/create-item", { reja: createField.value }) // 'create-item' URL manziliga 'POST' (asynr method) so'rovini yuboradi, so'rov tanasida 'reja' sifatida 'createField.value' ni yuboradi
-  .then((response) => { // So'rov muvaffaqiyatli amalga oshirilsa, kelgan javob bilan ishlash uchun funksiyani chaqiradi
+
+axios // axios yordamida serverga POST so'rovi yuboriladi , User Library(Http so'rovlarini)
+      // yuborishda server bilan easy connection qilish uchun ishlatiladi.
+  .post("/create-item", { reja: createField.value }) // '/create-item' URL manziliga 'reja' qiymati bilan POST so'rovi yuboriladi
+  .then((response) => { // Agar so'rov muvaffaqiyatli amalga oshirilsa
+    // 'item-list' identifikatoriga ega elementni topib, unga yangi element qo'shamiz
     document
-      .getElementById("item-list") // HTML hujjatidagi 'item-list' identifikatoriga ega elementni topadi
-      .insertAdjacentHTML("beforeend", itemTemplate(response.data)); // 'itemTemplat' yordamida yaratilgan HTML kodini 'item-list' elementining oxiriga qo'shadi
-    createField.value = ""; // 'createField' elementining qiymatini bo'shatadi
-    createField.focus(); // 'createField' elementiga fokusni qaytaradi
+      .getElementById("item-list") // Sahifadagi 'item-list' ID-siga ega elementni topadi
+      .insertAdjacentHTML("beforeend", itemTemplate(response.data)); // Yangi elementni ro'yxat oxiriga qo'shadi
+    createField.value = ""; // Kiritish maydonini tozalaydi
+    createField.focus(); // Kiritish maydoniga fokusni qaytaradi
   })
-  .catch((err) => { // Agar so'rovda xatolik yuzaga kelsa, xatolikni ushlab, funksiyani chaqiradi
-    console.log("iltimos qaytadan harakat qiling!"); // Konsolda "iltimos qaytadan harakat qiling!" xabarini chiqaradi
+  .catch((err) => { // Agar so'rovda xatolik yuzaga kelsa
+    console.log("Iltimos, qaytadan harakat qiling!", err); // Xatolik haqida xabarni konsolga chiqaradi
   });
-});
 
 
 // STEP - 1 (Delete operation)
 
-document.addEventListener("click", function (e) { // Butun hujjatda "click" event ni tinglaydi
+document.addEventListener("click", function (e) {
+  // "click" hodisasini tinglaydi (sahifadagi istalgan joy bosilganda ishga tushadi)
   
-  // delete oper
-  console.log(e.target); // Ekranga bosilgan elementni konsolda chiqaradi
-  if (e.target.classList.contains("delete-me")) { // Agar bosilgan element "delete-me" classiga ega bo'lsa, shartni bajaradi
-    if (confirm("Aniq ochirmoqchimisiz?")) { // Foydalanuvchidan o'chirishni tasdiqlashni so'raydi
-      axios
-        .post("/delete-item", { id: e.target.getAttribute("data-id") }) // '/delete-item' URL manziliga POST so'rovini yuboradi, so'rov tanasida "id" ni yuboradi
+  console.log(e.target); // Bosilgan elementni konsolga chiqaradi
 
-// STEP - 6 Frontendga kirib kelish
-        .then((response) => { // So'rov muvaffaqiyatli amalga oshirilsa, kelgan javob bilan ishlash uchun funksiyani chaqiradi
-          console.log(response.data); // Javobni konsolda chiqaradi
-          e.target.parentElement.parentElement.remove(); // HTML hujjatidan elementni o'chiradi
+  // Agar bosilgan element "delete-me" classiga ega bo'lsa, ya'ni foydalanuvchi "oʻchirish" tugmachasini bossa
+  if (e.target.classList.contains("delete-me")) { 
+
+    // Foydalanuvchidan o'chirishni tasdiqlashni so'raydi
+    if (confirm("Aniq o‘chirmoqchimisiz?")) { 
+
+      // `data-id` atributidan elementning ID sini oladi va serverga yuboradi
+      axios.post("/delete-item", { id: e.target.getAttribute("data-id") }) 
+      
+        .then((response) => { // Agar so‘rov muvaffaqiyatli bajarilsa:
+          console.log(response.data); // Serverdan kelgan javobni konsolga chiqaradi
+          
+          // HTML sahifasidan o‘chirilayotgan elementning ikki qavat yuqori (ota-bobosi) elementini olib tashlaydi
+          e.target.parentElement.parentElement.remove(); 
         })
-        .catch((err) => { // Agar so'rovda xatolik yuzaga kelsa, xatolikni ushlab, funksiyani chaqiradi
-          console.log("Iltimos qaytadan harakat qiling!", err); // Konsolda xatolik xabarini chiqaradi
+        
+        .catch((err) => { // Agar xatolik yuzaga kelsa:
+          console.log("Iltimos, qaytadan harakat qiling!", err); // Xatolik xabarini chiqaradi
         });
     }
   }
-
 
 
   //edit oper
@@ -94,7 +102,7 @@ document.addEventListener("click", function (e) { // Butun hujjatda "click" even
 });
 
 
-
+// Clean All Operation
 document.getElementById("clean-all").addEventListener("click", function () {
   axios
     .post("/delete-all", { delete_all: true })
@@ -109,3 +117,4 @@ document.getElementById("clean-all").addEventListener("click", function () {
       console.log("Iltimos qaytadan harakat qiling!");
     });
 });
+ 

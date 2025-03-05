@@ -26,7 +26,7 @@ mongodb.connect(
 			const server = http.createServer(app)
 			// HTTP server yaratamiz va unga app (Express yoki boshqa) ni ulaymiz
 
-			let PORT = 3000 // Server ishlaydigan port raqami
+			let PORT = 3007 // Server ishlaydigan port raqami
 			server.listen(PORT, function () {
 				console.log(
 					`The server is running successfully on port:${PORT}, http://localhost:${PORT}`

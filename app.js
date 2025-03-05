@@ -44,14 +44,20 @@ app.post('/create-item', (req, res) => { // '/create-item' endpointi uchun POST 
 
 // Delete section 
 // STEP 2 (Backendga kirish)
-app.post('/delete-item', (req, res) => { // '/delete-item' endpointi uchun POST so'rovini olib ishlov beradi
-    const id = req.body.id // So'rov(body) 'id' ni oladi va `id` o'zgaruvchiga saqlaydi
+app.post('/delete-item', (req, res) => { 
+// '/delete-item' endpointi uchun POST so'rovini olib ishlov beradi
+    const id = req.body.id
+// So'rov(body) 'id' ni oladi va `id` o'zgaruvchiga saqlaydi
+
 // STEP 3 (Backend => Database delete amalga oshirish)  
-    db.collection('plans').deleteOne( // 'plans' kolleksiyasidan bir hujjatni o'chiradi
-        { _id: new mongodb.ObjectId(id) }, // '_id' teng bo'lgan hujjatni tanlaydi va yangi `ObjectId` yaratiladi
+    db.collection('plans').deleteOne(
+// 'plans' kolleksiyasidan bir hujjatni o'chiradi
+        { _id: new mongodb.ObjectId(id) },
+// '_id' teng bo'lgan hujjatni tanlaydi va yangi `ObjectId` yaratiladi
         function (err, data) { // Callback funksiyasi, o'chirish operatsiyasi tugagach chaqiriladi
 // STEP 4 DataBase yana qayta backendga qaytmoqda
-            res.json({ state: 'success' }) // Mijozga JSON formatida javob yuboradi, bu muvaffaqiyatni ko'rsatadi
+            res.json({ state: 'success' })
+// Mijozga JSON formatida javob yuboradi, bu muvaffaqiyatni ko'rsatadi
         }
     )
 })
